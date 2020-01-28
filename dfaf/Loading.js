@@ -11,11 +11,11 @@ export default function Loading() {
 
 const styles = StyleSheet.create({
     container : {
-        flex : 0,
+        flex : 1,
         backgroundColor : '#FDF6AA',
         paddingVertical : 50,
         paddingHorizontal : 20,
-        justifyContent:'center'
+        justifyContent:'flex-end'
 
        
     },
