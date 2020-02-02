@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, Alert } from 'react-native';
 import * as Location from 'expo-location';
 import Loading from "./Loading";
-import axios from "axios";
+import Weather from './Weather';
 
 const API_KEY = '06bb3d9425217aaf472d9821bf139ab9';
 
 export default class App extends Component {
 
   state = {
-    isLoaded: false,
+    isLoading: true,
     error: null,
-    temperature: null,
+    temp: null,
     name: null
   };
   componentDidMount() {
@@ -40,16 +40,17 @@ export default class App extends Component {
       .then(response => response.json())
       .then(json => {
         this.setState({
-          temperature: json.main.temp,
+          temp: json.main.temp,
           name: json.weather[0].main,
-          isLoaded: true
+          isLoading: false,
         });
-      });
+        console.log(json);
+      })
+      .catch(error => console.log(error))
   };
 
   render() {
-    const {isLoading} = this.state;
-    console.log(this.state)
-    return isLoading ? (<Loading />) : (<Text>NOTHING</Text>);
+    const {isLoading, temp, name} = this.state;
+    return isLoading ? (<Loading />) : <Weather temp={Math.round(temp)}/>
   }
 }
