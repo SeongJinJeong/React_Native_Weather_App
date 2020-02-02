@@ -43,6 +43,7 @@ export default class App extends Component {
           temp: json.main.temp,
           name: json.weather[0].main,
           isLoading: false,
+          error : null,
         });
         console.log(json);
       })
@@ -51,6 +52,6 @@ export default class App extends Component {
 
   render() {
     const {isLoading, temp, name} = this.state;
-    return isLoading ? (<Loading />) : <Weather temp={Math.round(temp)}/>
+    return isLoading ? (<Loading />) : <Weather temp={Math.round(temp)} condition ={name}/>
   }
 }
