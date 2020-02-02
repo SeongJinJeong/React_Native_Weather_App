@@ -7,27 +7,27 @@ import { LinearGradient } from 'expo-linear-gradient';
 const weatherOptions = {
     Thunderstorm: {
       iconName: "weather-lightning",
-      gradient: ["#373B44", "#4286f4"],
-      title: "Thunderstorm in the house",
-      subtitle: "Actually, outside of the house"
+      gradient: ["#093028", "#237A57"],
+      title: "천둥",
+      subtitle: "천둥이 칠거에요!"
     },
     Drizzle: {
       iconName: "weather-rainy",
       gradient: ["#89F7FE", "#66A6FF"],
-      title: "Drizzle",
-      subtitle: "Is like rain, but gay 🏳️‍🌈"
+      title: "산발적 비",
+      subtitle: "비가 올 수도 있어요."
     },
     Rain: {
       iconName: "weather-pouring",
-      gradient: ["#00C6FB", "#005BEA"],
-      title: "Raining like a MF",
-      subtitle: "For more info look outside"
+      gradient: ["#89F7FE", "#66A6FF"],
+      title: "비 옴",
+      subtitle: "밖에 비가 내리고 있어요."
     },
     Snow: {
       iconName: "weather-snowy",
       gradient: ["#7DE2FC", "#B9B6E5"],
-      title: "Cold as balls",
-      subtitle: "Do you want to build a snowman? Fuck no."
+      title: "눈 내림",
+      subtitle: "눈이 내리네요."
     },
     Atmosphere: {
       iconName: "weather-fog",
@@ -36,32 +36,32 @@ const weatherOptions = {
     Clear: {
       iconName: "weather-sunny",
       gradient: ["#FF7300", "#FEF253"],
-      title: "Sunny as fuck",
-      subtitle: "Go get your ass burnt"
+      title: "맑음",
+      subtitle: "오늘은 날씨가 좋네요."
     },
     Clouds: {
       iconName: "weather-cloudy",
       gradient: ["#D7D2CC", "#304352"],
-      title: "Clouds",
-      subtitle: "I know, fucking boring"
+      title: "구름 많음",
+      subtitle: "구름이 너무 많아요"
     },
     Mist: {
       iconName: "weather-fog",
       gradient: ["#4DA0B0", "#D39D38"],
-      title: "Mist!",
-      subtitle: "It's like you have no glasses on."
+      title: "안개",
+      subtitle: "안개가 껴있네요."
     },
     Dust: {
-      iconName: "weather-hail",
+      iconName: "weather-hurricane",
       gradient: ["#4DA0B0", "#D39D38"],
-      title: "Dusty",
-      subtitle: "Thanks a lot China 🖕🏻"
+      title: "황사",
+      subtitle: "먼지가 많이 날려요."
     },
     Haze: {
       iconName: "weather-fog",
       gradient: ["#4DA0B0", "#D39D38"],
-      title: "Haze",
-      subtitle: "Just don't go outside."
+      title: "흐림",
+      subtitle: "밖의 날씨가 흐립니다."
     }
   };
 
@@ -76,7 +76,9 @@ export default function Weather({temp,condition}){
                 <Text style={styles.temp}>{temp}°</Text>
             </View>
             <View style={styles.halfContainer}>
-        </View>
+                <Text style={styles.title}>{weatherOptions[condition].title}</Text>
+                <Text style={styles.subtitle}>{weatherOptions[condition].subtitle}</Text>
+            </View>
         </LinearGradient>
     )
 }
@@ -96,6 +98,19 @@ const styles = StyleSheet.create({
         fontSize : 32,
         marginTop : 10,
         color: "white",
+    },
+
+    title : {
+        fontSize : 50,
+        color :"white",
+        marginBottom : 20,
+        justifyContent : "flex-start",
+    },
+
+    subtitle : {
+        fontSize : 20,
+        color : "white",
+        justifyContent : "flex-start"
     }
 });
 
