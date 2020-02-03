@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, Alert } from 'react-native';
 import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
 import Loading from "./Loading";
 import Weather from './Weather';
 
@@ -20,7 +21,10 @@ export default class App extends Component {
 
   _getLocation= async() =>{
     try{
-      await Location.getPermissionsAsync();
+      let { status } = await Permissions.askAsync(Permissions.LOCATION);
+      if (status !== 'granted') {
+        throw "Error On Grant!";
+      }
        const {
         coords: { latitude, longitude }
       } = await Location.getCurrentPositionAsync();
@@ -30,7 +34,6 @@ export default class App extends Component {
       Alert.alert("Can't find you.","So Sad...");
       console.log(error);
     }
-
   }
 
   _getWeather = (lat, long) => {
