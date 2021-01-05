@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.21.1",
     "expo-linear-gradient": "^8.0.0",
     "prop-types": "^15.7.2",
     "proptype": "^1.0.0"
